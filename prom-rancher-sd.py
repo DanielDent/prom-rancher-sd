@@ -10,7 +10,7 @@ import json
 
 def get_current_services():
     headers = {
-        'User-Agent': "prom-cowhand/0.1",
+        'User-Agent': "prom-rancher-sd/0.1",
         'Accept': 'application/json'
     }
     req = urllib.request.Request('http://rancher-metadata/2015-12-19/containers', headers=headers)
@@ -40,6 +40,6 @@ def get_monitoring_config():
 
 if __name__ == '__main__':
     while True:
-        with open('/prom-cowhand-data/rancher.json', 'w') as config_file:
+        with open('/prom-rancher-sd-data/rancher.json', 'w') as config_file:
             json.dump(get_monitoring_config(), config_file, indent=2)
         time.sleep(30)
