@@ -13,7 +13,7 @@ def get_current_services():
         'User-Agent': "prom-rancher-sd/0.1",
         'Accept': 'application/json'
     }
-    req = urllib.request.Request('http://rancher-metadata/2015-12-19/containers', headers=headers)
+    req = urllib.request.Request('http://rancher-metadata.rancher.internal/2015-12-19/containers', headers=headers)
     with urllib.request.urlopen(req) as response:
         return json.loads(response.read().decode('utf8 '))
 
