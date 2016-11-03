@@ -6,7 +6,7 @@ import time
 import urllib.parse
 import urllib.request
 import json
-
+import shutil
 
 def get_current_services():
     headers = {
@@ -40,6 +40,7 @@ def get_monitoring_config():
 
 if __name__ == '__main__':
     while True:
-        with open('/prom-rancher-sd-data/rancher.json', 'w') as config_file:
+        with open('/prom-rancher-sd-data/rancher.json.temp', 'w') as config_file:
             json.dump(get_monitoring_config(), config_file, indent=2)
+        shutil.move('/prom-rancher-sd-data/rancher.json.temp','/prom-rancher-sd-data/rancher.json')
         time.sleep(30)
